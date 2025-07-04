@@ -1,26 +1,32 @@
-# fly.toml app configuration file generated for ms-gateway-unir on 2025-07-04T15:00:44-05:00
-#
-# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
-#
-
-app = 'ms-gateway-unir'
-primary_region = 'gru'
+# fly.toml para ms-gateway-unir
+app = "ms-gateway-unir"
+primary_region = "gru"
 
 [build]
-  dockerfile = 'Dockerfile'
+  dockerfile = "Dockerfile"
+
+[env]
+  # Apunta tu Gateway al Eureka público (nota la barra final "/")
+  EUREKA_URL = "http://eureka-server.fly.dev:8761/eureka/"
 
 [http_service]
   internal_port = 8762
   force_https = true
-  auto_stop_machines = 'stop'
+  auto_stop_machines = "stop"
   auto_start_machines = true
   min_machines_running = 0
-  processes = ['app']
+
+  # Health check: Fly sólo marcará tu máquina como "UP"
+  # cuando /actuator/health responda 200 OK.
+  [http_service.checks]
+    method = "GET"
+    path = "/actuator/health"
+    interval = "15s"
+    timeout = "2s"
+    # le damos hasta 60s para que Spring termine de arrancar
+    grace_period = "60s"
 
 [[vm]]
-  memory = '1gb'
-  cpu_kind = 'shared'
+  memory = "1gb"
+  cpu_kind = "shared"
   cpus = 1
-
-[env]
-  EUREKA_URL = "http://eureka-server.fly.dev:8761/eureka"
