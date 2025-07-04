@@ -25,3 +25,4 @@ jobs:
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
         run: flyctl deploy --app ms-gateway --config fly.toml --dockerfile Dockerfile --detach
+
