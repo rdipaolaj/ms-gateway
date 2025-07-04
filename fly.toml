@@ -6,8 +6,7 @@ primary_region = "gru"
   dockerfile = "Dockerfile"
 
 [env]
-  # Apunta tu Gateway al Eureka público
-  EUREKA_URL = "http://eureka-server.fly.dev:8761/eureka/"
+  EUREKA_URL = "http://eureka-server.fly.dev/eureka"
 
 [http_service]
   internal_port = 8762
