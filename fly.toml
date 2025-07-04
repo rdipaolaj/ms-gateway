@@ -6,7 +6,7 @@ primary_region = "gru"
   dockerfile = "Dockerfile"
 
 [env]
-  EUREKA_URL = "https://eureka-server.fly.dev/eureka/"
+  EUREKA_URL = "https://eureka-server.fly.dev/"
 
 [http_service]
   internal_port = 8762
