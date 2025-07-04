@@ -23,4 +23,4 @@ primary_region = 'gru'
   cpus = 1
 
 [env]
-  EUREKA_URL = "http://eureka-server.fly.dev/eureka"
+  EUREKA_URL = "http://eureka-server.fly.dev:8761/eureka"
