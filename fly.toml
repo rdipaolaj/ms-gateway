@@ -21,3 +21,6 @@ primary_region = 'gru'
   memory = '1gb'
   cpu_kind = 'shared'
   cpus = 1
+
+[env]
+  EUREKA_URL = "http://eureka-server.fly.dev/eureka"
